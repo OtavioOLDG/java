@@ -1,191 +1,187 @@
-package olamundo9;
+package atividade02;
+
+import java.util.Random;
+import java.util.Scanner;
 
 public class Metodos {
-	
-	public void calculatePayment(double hoursWorked, double paymentPerHour) {
-		
-		double grossSalary, taxes = 30, netSalary;
-		
-		grossSalary = hoursWorked * paymentPerHour;
-		netSalary = grossSalary * ((100 - taxes) / 100);
-		
-		System.out.println("Salário bruto: R$" + grossSalary);
-		System.out.println("Salário líquido: R$" + netSalary);
-		
-	}
-	
-	public void calculateKillowatts(double kw, double minSalaray) {
-		double kwCost, kwHome;
-		
-		kwCost = minSalaray * 0.01;
-		kwHome = kwCost * kw;
-		
-		System.out.println("Valor do quilowatt: R$" + kwCost + ";");
-		System.out.println("Valor consumido na residência: R$" + kwHome + "0.");
-		
-	}
-	
-	public void triangle(int ang1, int ang2, int ang3) {
-		
-		if(ang1 == 60 && ang2 == 60 && ang3 == 60) {
-			System.out.println("O triângulo informado é um triângulo retângulo.");
-		}
-		else if(((ang1 + ang2 + ang3) == 180) && ((ang1 == ang2 && ang2 != ang3) || (ang2 == ang3 && ang2 != ang1) || (ang1 == ang3 && ang3 != ang2))) {
-			if(ang1 == 90 || ang2 == 90 || ang3 == 90){
-				System.out.println("O triângulo informado é isósceles retângulo.");
-			}
-			else {
-				System.out.println("O triângulo informado é isósceles.");
-			}
-		}
-		else if(((ang1 + ang2 + ang3) == 180) && ang1 != ang2 && ang2 != ang3 && ang1 != ang3) {
-			if(ang1 == 90 || ang2 == 90 || ang3 == 90) {
-				System.out.println("O triângulo informado é escaleno retângulo.");
-			}
-			else if(ang1 < 90 && ang2 < 90 && ang3 < 90) {
-				System.out.println("O triângulo informado é acutângulo escaleno.");
-			}
-			else if(ang1 > 90 || ang2 > 90 || ang3 > 90){
-				System.out.println("O triângulo informado é obtusângulo escaleno.");
-			}
-		}
-		else {
-			System.out.println("Não é triângulo.");
+	//Exercício 03
+	Random random = new Random();
+	public void  randomizaVetor(int[] vetor, int max) {
+		for(int i = 0; i < vetor.length; i++) {
+			vetor[i] = random.nextInt(max);
 		}
 	}
 	
-	public void marketPrice(int pCode) {
-		if(pCode > 0 && pCode < 11) {
-			System.out.println("O produto comprado vale R$ 10,00 a unidade");
-		}
-		else if(pCode > 10 && pCode < 21) {
-			System.out.println("O produto comprado vale R$ 15,00 a unidade");
-		}
-		else if(pCode > 20 && pCode < 31) {
-			System.out.println("O produto comprado vale R$ 20,00 a unidade");
-		}
-		else if(pCode > 30 && pCode < 41) {
-			System.out.println("O produto comprado vale R$ 40,00 a unidade");
-		}
-		else {
-			System.out.println("Código inválido");
+	public void  randomizaMatriz(int[][] matriz, int linhas, int colunas, int max) {
+		for(int i = 0; i < linhas; i++) {
+			for(int o = 0; o < colunas; o++) {
+				matriz[i][o] = random.nextInt(max);
+			}
 		}
 	}
 	
-	public int marketTotal(int pCode, int qBought) {
-		int price = 0;
-		if(pCode > 0 && pCode < 11) {
-			System.out.printf("O total comprado equivale à R$%d,00\n", (10 * qBought));
-			price = 10;
-		}
-		else if(pCode > 10 && pCode < 21) {
-			System.out.printf("O total comprado equivale à R$%d,00\n", (15 * qBought));
-			price = 15;
-		}
-		else if(pCode > 20 && pCode < 31) {
-			System.out.printf("O total comprado equivale à R$%d,00\n", (20 * qBought));
-			price = 20;
-		}
-		else if(pCode > 30 && pCode < 41) {
-			System.out.printf("O total comprado equivale à R$%d,00\n", (40 * qBought));
-			price = 40;
-		}
-		return price * qBought;
-	}
-	
-	public void marketDiscount(int total) {
-		if(total < 250) {
-			System.out.printf("O total com a aplicação do desconto equivale à R$%.2f.\n", (double) total * 0.95);
-		}
-		else if(total > 250 && total <= 500) {
-			System.out.printf("O total com a aplicação do desconto equivale à R$%.2f.\n", (double) total * 0.90);
-		}
-		else if(total > 500) {
-			System.out.printf("O total com a aplicação do desconto equivale à R$%.2f.\n", (double) total * 0.85);
+	public void printaVetor(int[] vetor) {
+		for(int i = 0; i < vetor.length; i++) {
+			if((i+1) < vetor.length) {
+				System.out.printf("%d, ", vetor[i]);
+			} else {
+				System.out.printf("%d.\n", vetor[i]);
+			}
 		}
 	}
 	
-	void fatorialCalcule(int number) {
-		int fatorial = 1;
-		for(int i = 1; i <= number; i++) {
-			fatorial *= i; 
-		}
-		System.out.println(fatorial);
-	}
-	
-	void fatorialDistanceCalc(int number1, int number2) {
-		for(int o = number1; o <= number2; o++) {
-			int fatorial = 1;
-			for(int i = 1; i <= o; i++) {
-				fatorial *= i; 
+	public void  printaMatriz(int[][] matriz, int linhas, int colunas) {
+		for(int i = 0; i < linhas; i++) {
+			for(int o = 0; o < colunas; o++) {
+				System.out.printf("%d\t", matriz[i][o]);
 			}
-			System.out.printf("Fatorial de %d: %d;\n", o, fatorial);
+			System.out.println();
 		}
 	}
 	
-	void calculateChange(double paid) {
-		int count200 = 0, count100 = 0, count50 = 0, count20 = 0, count10 = 0;
-		int count5 = 0, count2 = 0, count1 = 0, count05 = 0, count025 = 0;
-		int count010 = 0, count005 = 0, count001 = 0;
-		while(paid > 0.0) {
-			if((paid - 200) >= 0.0) {
-				count200++;
-				paid -= 200;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) >= 0.0 ) {
-				count100++;
-				paid -= 100;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) >= 0.0) {
-				count50++;
-				paid -= 50;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) >= 0.0) {
-				count20++;
-				paid -= 20;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) >= 0.0) {
-				count10++;
-				paid -= 10;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) < 0.0 && (paid - 5) >= 0.0) {
-				count5++;
-				paid -= 5;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) < 0.0 && (paid - 5) < 0.0 && (paid - 2) >= 0.0) {
-				count2++;
-				paid -= 2;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) < 0.0 && (paid - 5) < 0.0 && (paid - 2) < 0.0 && (paid - 1) >= 0.0) {
-				count1++;
-				paid -= 1;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) < 0.0 && (paid - 5) < 0.0 && (paid - 2) < 0.0 && (paid - 1) < 0.0 && (paid - 0.5) >= 0.0) {
-				count05++;
-				paid -= 0.5;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) < 0.0 && (paid - 5) < 0.0 && (paid - 2) < 0.0 && (paid - 1) < 0.0 && (paid - 0.5) < 0.0 && (paid - 0.25) >= 0.0) {
-				count025++;
-				paid -= 0.25;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) < 0.0 && (paid - 5) < 0.0 && (paid - 2) < 0.0 && (paid - 1) < 0.0 && (paid - 0.5) < 0.0 && (paid - 0.25) < 0.0 && (paid - 0.10) >= 0.0) {
-				count010++;
-				paid -= 0.10;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) < 0.0 && (paid - 5) < 0.0 && (paid - 2) < 0.0 && (paid - 1) < 0.0 && (paid - 0.5) < 0.0 && (paid - 0.25) < 0.0 && (paid - 0.10) < 0.0 && (paid - 0.05) >= 0.0) {
-				count005++;
-				paid -= 0.05;
-			}
-			else if((paid - 200) < 0.0 && (paid - 100) < 0.0 && (paid - 50) < 0.0 && (paid - 20) < 0.0 && (paid - 10) < 0.0 && (paid - 5) < 0.0 && (paid - 2) < 0.0 && (paid - 1) < 0.0 && (paid - 0.5) < 0.0 && (paid - 0.25) < 0.0 && (paid - 0.10) < 0.0 && (paid - 0.05) < 0.0 && (paid - 0.01) >= 0.0) {
-				count001++;
-				paid -= 0.01;
+	public void preencheVetorResultante1(int[] vet1, int[] vet2, int[] vetorResultante1) {
+		int cont = 0;
+		for(int i = 0; i < vet1.length; i++) {
+			if(vet1[i] % 2 == 0) {
+				vetorResultante1[cont] = vet1[i];
+				cont++;
 			}
 		}
 		
-		System.out.printf("Total a ser devolvido:\n%d nota(s) de R$ 200,00\n%d nota(s) de R$ 100,00\n%d nota(s) de R$ 50,00\n%d nota(s) de R$ 20,00\n%d nota(s) de R$ 10,00\n%d nota(s) de"
-				+ " R$ 5,00\n%d nota(s) de R$ 2,00\n%d Moeda(s) de R$ 1,00\n%d Moeda(s) de R$ 0,50\n%d Moeda(s) de R$ 0,25\n"
-				+ "%d Moeda(s) de R$ 0,10\n%d Moeda(s) de R$ 0,05\n%d Moeda(s) de R$ 0,01\n", count200, count100, count50, count20, count10, count5, count2, count1, count05, count025, count010, count005, count001);
+		for(int i = 0; i < vetorResultante1.length; i++) {
+			for(int o = 0; o < vet2.length; o++) {
+				vetorResultante1[i] = vetorResultante1[i] + vet2[o];
+			}
+		}
 		
 	}
 	
+	public void preencheVetorResultante2(int[] vet1, int[] vet2, int[] vetorResultante2) {
+		int cont, contVetor = 0;
+
+		for(int i = 0; i < vet1.length; i++) {
+			if((vet1[i] % 2) != 0) {
+				vetorResultante2[contVetor] = vet1[i];
+				contVetor++;
+			}
+		}
+		
+		for(int i = 0; i < vetorResultante2.length; i++) {
+			cont = 0;
+			for (int o = 0; o < vet2.length; o++) {
+				if(vetorResultante2[i] % vet2[o] == 0) {
+					cont++;
+				}
+			}
+			vetorResultante2[i] = cont;
+		}
+	}
+	//Até aqui vai o exercício 03
+	
+	//Exec 04
+		public void geraContas (Banco[] contas) {
+			for(int i = 0; i < contas.length; i++){
+				contas[i].conta = (i+1);
+			}
+		}
+		
+		public void geraSaldo(Banco[] contas, double max) {
+			Random random = new Random();
+			for(int i = 0; i < contas.length; i++) {
+				contas[i].saldo = random.nextDouble(max);
+			}
+		}
+		
+		public void numeroErrado() {
+			System.out.println("Número digitado inválido. Por favor, tente novamente.\n");
+		}
+		
+		public void programaEncerrado() {
+			System.out.println("Programa encerrado.");
+		}
+		
+		public void mostraSaldo(Banco[] contas, int escolhaConta) {
+			System.out.printf("O saldo da sua conta é de R$%.2f reais.\n", contas[escolhaConta].saldo);
+		}
+		
+		public void mostraAtivoBancario(Banco[] contas) {
+			double ativoBancario = 0;
+			for(int i = 0; i < contas.length; i++) {
+				ativoBancario += contas[i].saldo;
+			}
+			System.out.printf("O ativo bancário é de %.2f reais no momento.\n", ativoBancario);
+		}
+		
+		public void acaoBanco(int escolha, Banco[] contas, int escolhaConta) {
+			Scanner input = new Scanner(System.in);
+			Metodos metodo = new Metodos();
+			double auxiliar1 = 0;
+			int auxiliar2 = 11;
+			if(escolha == 1) {
+				System.out.print("Informe o quanto deseja transferir: ");
+				auxiliar1 = input.nextDouble();
+				if(auxiliar1 > contas[escolhaConta].saldo) {
+					System.out.println("Impossível realizar a transferência. Saldo indisponível.");
+				} else {
+					System.out.print("Informe para qual conta deseja tranferir: ");
+					do {
+						auxiliar2 = input.nextInt();
+						auxiliar2--;
+						if(auxiliar2 > 9 || auxiliar2 < 0){
+							metodo.numeroErrado();
+						}
+					} while(auxiliar2 > 9 || auxiliar2 < 0);
+					contas[escolhaConta].saldo -= auxiliar1;
+					contas[auxiliar2].saldo += auxiliar1;
+				}
+				metodo.mostraSaldo(contas, escolhaConta);
+			} else if (escolha == 2){
+				System.out.print("Informe o quanto deseja sacar: ");
+				auxiliar1 = input.nextDouble();
+				if(auxiliar1 > contas[escolhaConta].saldo) {
+					System.out.println("Impossível realizar o saque. Saldo indisponível.\nRecomece a operação.\n");
+				} else {
+					contas[escolhaConta].saldo -= auxiliar1;
+					metodo.mostraSaldo(contas, (escolhaConta));
+				}
+			} else if(escolha == 3) {
+				metodo.mostraAtivoBancario(contas);
+			} else {
+				metodo.mostraSaldo(contas, escolhaConta);
+				System.out.print("Informe o quanto deseja transferir: ");
+				auxiliar1 = input.nextDouble();
+				contas[escolhaConta].saldo += auxiliar1;
+				metodo.mostraSaldo(contas, escolhaConta);
+			}
+		}
+		//Até aqui vai o exercício 04
+		//Aqui começa o 05
+	public void preencheVetorLinhas(int[][] matriz, int[] vet1, int linhas, int colunas) {
+		int cont = 0;
+		for(int i = 0; i < linhas; i++) {
+			for(int o = 0; o < colunas; o++) {
+				if(o == 0) {
+					vet1[cont] = matriz[i][o];
+				} else if(matriz[i][o] > vet1[cont]){
+					vet1[cont] = matriz[i][o];
+				}
+			}
+			cont++;
+		}
+	}
+	
+	public void preencheVetorColunas(int[][] matriz, int[] vet2, int linhas, int colunas) {
+		int cont = 0;
+		for(int i = 0; i < linhas; i++) {
+			for(int o = 0; o < colunas; o++) {
+				if(o == 0) {
+					vet2[cont] = matriz[o][i];
+				} else if(matriz[o][i] < vet2[cont]){
+					vet2[cont] = matriz[o][i];
+				}
+			}
+			cont++;
+		}
+	}
+		
 }
